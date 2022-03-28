@@ -16,7 +16,7 @@ function Veggie() {
       setVeggie(JSON.parse(check));
     }
     else{
-      const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=33c3f49764894c1896d34e60ebe3d9ca&number=9`);
+      const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=33c3f49764894c1896d34e60ebe3d9ca&number=9&tags=vegetarian`);
       const data = await api.json();
       localStorage.setItem('veggie',JSON.stringify(data.recipes));
       setVeggie(data.recipes);
@@ -29,7 +29,7 @@ function Veggie() {
           <Wrapper>
             <h3>Our Vegatarian Picks</h3>
             <Splide options={
-              {perPage:3,arrows:false,pagination:false,drag:"free",gap:"5rem",}
+              {perPage:3,arrows:false,pagination:false,drag:"free",gap:"3rem",}
             }>
             {veggie.map((recipe=>{
               return(
@@ -52,7 +52,7 @@ const Wrapper = styled.div`
   
 `
 const Card = styled.div`
-  min-height: 25rem;
+  min-height: 15rem;
   overflow: hidden;
   position:relative;
 img{
@@ -85,7 +85,7 @@ const Gradient = styled.div`
  position: absolute;
  width:100%;
  height:100%;
- background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.5));
+ //background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.5));
 `
 
 export default Veggie;
